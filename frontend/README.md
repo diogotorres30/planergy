@@ -15,10 +15,11 @@
 
 
 
-Template is based on React Slingshot project with hot reloading, linting, etc.. - original README bellow
-Material-ui for Android-like React components - see http://www.material-ui.com/#/components/
-Json-server for fake API - see ./api folder. You can modify the db.json. Example: run `npm run api` and then access `http://localhost:60062/appliances` in a browser
-There is few files left from original Slingshot project - We can use it in the future as a cookbook. Now we basically have to care only about ./src/components folder
+-Template is based on React Slingshot project with hot reloading, linting, etc.. \- original README bellow
+-Material-ui for Android-like React components \- see http://www.material-ui.com/#/components/
+-Json-server for fake API \- see ./api folder. You can modify the db.json. Example: run `npm run api` and then access `http://localhost:60062/appliances` in a browser
+
+There is few files left from original Slingshot project \- We can use it in the future as a cookbook. Now we basically have to care only about ./src/components folder
 
 Example is set to mobile screen ratio 1:0.75
 
