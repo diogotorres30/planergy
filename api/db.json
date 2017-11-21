@@ -1,0 +1,31 @@
+{
+  "appliances":[
+    {
+      "id": 1,
+      "type": "oven",
+      "location": "kitchnen"
+    },
+    {
+      "id": 1,
+      "type": "kettle",
+      "location": "kitchnen"
+    } 
+  ],
+  "consumptions":[
+    {
+      "id": 1,
+      "date": "1/2017",
+      "value": 1432
+    },
+    {
+      "id": 2,
+      "date": "2/2017",
+      "value": 1112
+    },
+    {
+      "id": 3,
+      "date": "3/2017",
+      "value": 1521
+    }   
+  ]
+}
