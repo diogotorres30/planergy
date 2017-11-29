@@ -2,13 +2,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import FlatButton from 'material-ui/FlatButton';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 // import RaisedButton from 'material-ui/RaisedButton';
 
 const Sidebar = ({opened, sidebarToggle}) => {
 
-	const activeStyle = { color: 'blue' };		
+	const activeStyle = { color: 'white' };		
 	return (
 		<div>
 			<Drawer
@@ -16,20 +17,28 @@ const Sidebar = ({opened, sidebarToggle}) => {
 				width={200}
 				open={opened}
 				onRequestChange={() => sidebarToggle()}
-				containerStyle={{top: '64px', bottom: '35px'}}
+				containerStyle={{top: '64px', bottom: '35px', backgroundColor: '#c32738'}}
 			>
 				<MenuItem>
-					<NavLink to="/" activeStyle={activeStyle} onClick={sidebarToggle}>Home</NavLink>
+					<FlatButton href="/" labelStyle={{color: 'white'}} label="Home" onClick={sidebarToggle}/>
+					<div style={{background: '#000000', borderBottom: '1px solid white', overflow: 'hidden'}}/>
 				</MenuItem>
 				<MenuItem>
-					<NavLink to="/page1" activeStyle={activeStyle} onClick={sidebarToggle}>Page1</NavLink>
+					<FlatButton href="/page1" labelStyle={{color: 'white'}} label="Page1" onClick={sidebarToggle}/>
+					<div style={{background: '#000000', borderBottom: '1px solid white', overflow: 'hidden'}}/>
 				</MenuItem>
 				<MenuItem>
-					<NavLink to="/page2" activeStyle={activeStyle} onClick={sidebarToggle}>Page2</NavLink>					
+					<FlatButton href="/page2" labelStyle={{color: 'white'}} label="Page2" onClick={sidebarToggle}/>
+					<div style={{background: '#000000', borderBottom: '1px solid white', overflow: 'hidden'}}/>
+				</MenuItem>
+				<MenuItem>		
+					<FlatButton href="/tips" labelStyle={{color: 'white'}} label="tips" onClick={sidebarToggle}/>
+					<div style={{background: '#000000', borderBottom: '1px solid white', overflow: 'hidden'}}/>	
 				</MenuItem>
 				<MenuItem>
-					<NavLink to="/tips" activeStyle={activeStyle} onClick={sidebarToggle}>Tips</NavLink>					
-				</MenuItem>				
+					<FlatButton href="/" labelStyle={{color: 'white'}} label="Help" onClick={sidebarToggle}/>
+					<div style={{background: '#000000', borderBottom: '1px solid white', overflow: 'hidden'}}/>			
+				</MenuItem>					
 			</Drawer>
 		</div>
 	);
