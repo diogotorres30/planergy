@@ -10,6 +10,7 @@ const Navbar = ({sidebarToggle}) => (
   <AppBar
     title="Planergy"
     onLeftIconButtonTouchTap={sidebarToggle}
+    style={{position: 'fixed', width: '75vh'}}
   />
 );
 

@@ -22,11 +22,14 @@ const Sidebar = ({opened, sidebarToggle}) => {
 					<NavLink to="/" activeStyle={activeStyle} onClick={sidebarToggle}>Home</NavLink>
 				</MenuItem>
 				<MenuItem>
-					<NavLink to="/Page1" activeStyle={activeStyle} onClick={sidebarToggle}>Page1</NavLink>
+					<NavLink to="/page1" activeStyle={activeStyle} onClick={sidebarToggle}>Page1</NavLink>
 				</MenuItem>
 				<MenuItem>
-					<NavLink to="/Page2" activeStyle={activeStyle} onClick={sidebarToggle}>Page2</NavLink>					
+					<NavLink to="/page2" activeStyle={activeStyle} onClick={sidebarToggle}>Page2</NavLink>					
 				</MenuItem>
+				<MenuItem>
+					<NavLink to="/tips" activeStyle={activeStyle} onClick={sidebarToggle}>Tips</NavLink>					
+				</MenuItem>				
 			</Drawer>
 		</div>
 	);

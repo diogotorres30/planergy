@@ -8,6 +8,8 @@ import Navbar from './planergy/Navbar';
 import HomePage from './planergy/HomePage';
 import Page1 from './planergy/Page1';
 import Page2 from './planergy/Page2';
+import Tips from './planergy/Tips';
+import RoomTips from './planergy/RoomTips';
 import NotFoundPage from './NotFoundPage';
 
 // This is a class-based component because the current
@@ -15,8 +17,8 @@ import NotFoundPage from './NotFoundPage';
 // component at the top-level.
 
 class App extends React.Component {
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
 		this.state  = {
 			sidebarOpened: false
 		};
@@ -31,12 +33,16 @@ class App extends React.Component {
 			<div id="planergy">
 				<Navbar sidebarToggle={this.sidebarToggle}/>
 				<Sidebar opened={this.state.sidebarOpened} sidebarToggle={this.sidebarToggle}/>
-				<Switch>
-					<Route exact path="/" component={HomePage} />
-					<Route path="/page1" component={Page1} />
-					<Route path="/page2" component={Page2} />
-					<Route component={NotFoundPage}/>
-				</Switch>
+				<div style={{paddingTop: '64px', paddingBottom: '60px'}}>
+					<Switch>
+						<Route exact path="/" component={HomePage} />
+						<Route path="/page1" component={Page1} />
+						<Route path="/page2" component={Page2} />
+						<Route path="/tips/:room" component={RoomTips} />
+						<Route path="/tips" component={Tips} />
+						<Route component={NotFoundPage}/>
+					</Switch>
+				</div>
 				<BottomNav />
 			</div>
 		);
