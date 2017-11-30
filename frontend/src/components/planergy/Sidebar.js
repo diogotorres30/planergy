@@ -2,16 +2,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import FlatButton from 'material-ui/FlatButton';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 // import RaisedButton from 'material-ui/RaisedButton';
 
 const Sidebar = ({opened, sidebarToggle}) => {
-
-	const activeStyle = { color: 'white' };		
+	
+	const style = {color: 'black'};	
 	return (
-		<div>
+		<div id="sidebar">
 			<Drawer
 				docked={false}
 				width={200}
@@ -19,26 +18,21 @@ const Sidebar = ({opened, sidebarToggle}) => {
 				onRequestChange={() => sidebarToggle()}
 				containerStyle={{top: '64px', bottom: '35px', backgroundColor: '#c32738'}}
 			>
-				<MenuItem>
-					<FlatButton href="/" labelStyle={{color: 'white'}} label="Consumptions" onClick={sidebarToggle}/>
-					<div style={{background: '#000000', borderBottom: '1px solid white', overflow: 'hidden'}}/>
-				</MenuItem>
-				<MenuItem>
-					<FlatButton href="/page1" labelStyle={{color: 'white'}} label="Estimations" onClick={sidebarToggle}/>
-					<div style={{background: '#000000', borderBottom: '1px solid white', overflow: 'hidden'}}/>
-				</MenuItem>
-				<MenuItem>
-					<FlatButton href="/page2" labelStyle={{color: 'white'}} label="Kitchen" onClick={sidebarToggle}/>
-					<div style={{background: '#000000', borderBottom: '1px solid white', overflow: 'hidden'}}/>
-				</MenuItem>
-				<MenuItem>		
-					<FlatButton href="/tips" labelStyle={{color: 'white'}} label="tips" onClick={sidebarToggle}/>
-					<div style={{background: '#000000', borderBottom: '1px solid white', overflow: 'hidden'}}/>	
-				</MenuItem>
-				<MenuItem>
-					<FlatButton href="/" labelStyle={{color: 'white'}} label="Help" onClick={sidebarToggle}/>
-					<div style={{background: '#000000', borderBottom: '1px solid white', overflow: 'hidden'}}/>			
-				</MenuItem>					
+                <NavLink exact to="/" style={style} onClick={sidebarToggle}>
+					<MenuItem>Consumptions</MenuItem>				
+				</NavLink>
+                <NavLink to="/page1" style={style} onClick={sidebarToggle}>
+					<MenuItem>Estimations</MenuItem>				
+				</NavLink>
+                <NavLink to="/page2" style={style} onClick={sidebarToggle}>
+					<MenuItem>Kitchen</MenuItem>				
+				</NavLink>
+                <NavLink to="/tips" style={style} onClick={sidebarToggle}>
+					<MenuItem>Tips</MenuItem>				
+				</NavLink>
+                <NavLink to="/help" style={style} onClick={sidebarToggle}>
+					<MenuItem>Help</MenuItem>				
+				</NavLink>																				
 			</Drawer>
 		</div>
 	);
