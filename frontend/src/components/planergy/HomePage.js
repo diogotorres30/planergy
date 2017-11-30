@@ -1,16 +1,10 @@
 import React from 'react';
 import {Doughnut, HorizontalBar} from 'react-chartjs-2';
-//import Paper from 'material-ui/Paper';
-//import Paper from 'material-ui/Paper';
-//import FontIcon from 'material-ui/FontIcon';
-//import { Nav, NavItem, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, NavLink } from 'reactstrap';
+
+
 import {Tabs, Tab} from 'material-ui/Tabs';
 
 import SwipeableViews from 'react-swipeable-views';
-
-
-
-
 
 class HomePage extends React.Component{
     
@@ -95,50 +89,6 @@ const styles = {
 
 
 
-
-
-
-/*
-Nav.propTypes = {
-
-    <Nav pills>
-                 <NavItem>
-                 <NavLink href="/" active>Consumptions</NavLink>
-                 </NavItem>
-         
-                <NavItem>
-                    <NavLink href="/Page1">Estimations</NavLink>
-                    </NavItem>
-                    <NavItem>
-            <NavLink href="/Tips">Tips</NavLink>
-          </NavItem>
-         
-        </Nav>
-
-    tabs: PropTypes.bool,
-    pills: PropTypes.bool,
-    card: PropTypes.bool,
-    justified: PropTypes.bool,
-    fill: PropTypes.bool,
-    vertical: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-    horizontal: PropTypes.string,
-    navbar: PropTypes.bool,
-    tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
-    // pass in custom element to use
-  }
-  NavItem.propTypes = {
-    tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-    active: PropTypes.bool,
-    // pass in custom element to use
-  }
-
-  NavLink.propTypes = {
-    disabled: PropTypes.bool,
-    active: PropTypes.bool,
-    tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
-    // pass in custom element to use
-  }
-*/
 const data = {
     labels: [
         'Kitchen',
