@@ -1,5 +1,5 @@
 import React from 'react';
-import {Doughnut} from 'react-chartjs-2';
+import {Doughnut, HorizontalBar} from 'react-chartjs-2';
 
 
 
@@ -7,19 +7,24 @@ import {Doughnut} from 'react-chartjs-2';
         labels: [
             'Kitchen',
             'Living Room',
-            'Basement'
+            'Basement',
+            'Kevins Room'
         ],
+        
         datasets: [{
-            data: [200, 50, 100],
+            label: 'Consumption',
+            data: [43, 27, 10,20],
             backgroundColor: [
-            '#c32738',
-            '#36A2EB',
-            '#FFCE56'
+            '#FF1C00',
+            '#FF5C5C',
+            '#E34234',
+            '#FF6961'
             ],
             hoverBackgroundColor: [
             '#c32738',
             '#36A2EB',
-            '#FFCE56'
+            '#03C03C',
+            '#36AFFF'
             ]
         }]
     };
@@ -31,13 +36,16 @@ class HomePage extends React.Component{
           
               <div>
             <div style={{background: '#e0e0e0', borderBottom: '2px solid red', overflow: 'hidden'}}>
-            <h2>Consumptions</h2>
+            <h2>Consumptions</h2> 
                 <h3 style={{fontSize: '1.75rem', paddingLeft: '3rem', fontWeight: 'normal'}}>{name}</h3>
             </div>
             
-            <Doughnut data={data} />
+            <Doughnut style ={{widht: "30", height: "50"}} data={data}/>
             <div style={{background: '#e0e0e0', borderBottom: '2px solid red', overflow: 'hidden'}}></div>
-            <h3 style={{fontSize: '3.75rem', paddingLeft: '3rem', fontWeight: 'normal'}}></h3>
+            <div>
+       
+        <HorizontalBar style ={{widht: "30", height: "50"}} data={data} />
+        </div>
           </div>
 
         );
