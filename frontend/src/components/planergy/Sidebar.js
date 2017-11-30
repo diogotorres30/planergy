@@ -20,15 +20,15 @@ const Sidebar = ({opened, sidebarToggle}) => {
 				containerStyle={{top: '64px', bottom: '35px', backgroundColor: '#c32738'}}
 			>
 				<MenuItem>
-					<FlatButton href="/" labelStyle={{color: 'white'}} label="Home" onClick={sidebarToggle}/>
+					<FlatButton href="/" labelStyle={{color: 'white'}} label="Consumptions" onClick={sidebarToggle}/>
 					<div style={{background: '#000000', borderBottom: '1px solid white', overflow: 'hidden'}}/>
 				</MenuItem>
 				<MenuItem>
-					<FlatButton href="/page1" labelStyle={{color: 'white'}} label="Page1" onClick={sidebarToggle}/>
+					<FlatButton href="/page1" labelStyle={{color: 'white'}} label="Estimations" onClick={sidebarToggle}/>
 					<div style={{background: '#000000', borderBottom: '1px solid white', overflow: 'hidden'}}/>
 				</MenuItem>
 				<MenuItem>
-					<FlatButton href="/page2" labelStyle={{color: 'white'}} label="Page2" onClick={sidebarToggle}/>
+					<FlatButton href="/page2" labelStyle={{color: 'white'}} label="Kitchen" onClick={sidebarToggle}/>
 					<div style={{background: '#000000', borderBottom: '1px solid white', overflow: 'hidden'}}/>
 				</MenuItem>
 				<MenuItem>		
