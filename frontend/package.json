@@ -31,10 +31,12 @@
   "author": "CCU team",
   "license": "MIT",
   "dependencies": {
+    "chart.js": "2.7.1",
     "json-server": "0.12.1",
     "material-ui": "0.19.4",
     "object-assign": "4.1.0",
     "react": "16.0.0",
+    "react-chartjs-2": "2.6.4",
     "react-dom": "16.0.0",
     "react-redux": "5.0.5",
     "react-router-dom": "4.2.2",

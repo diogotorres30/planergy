@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+/*import React, {Component} from 'react';
 import FontIcon from 'material-ui/FontIcon';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
@@ -12,7 +12,7 @@ const nearbyIcon = <IconLocationOn />;
  * A simple example of `BottomNavigation`, with three labels and icons
  * provided. The selected `BottomNavigationItem` is determined by application
  * state (for instance, by the URL).
- */
+ 
 class BottomNav extends Component {
   state = {
     selectedIndex: 0,
@@ -22,7 +22,7 @@ class BottomNav extends Component {
 
   render() {
     return (
-      <Paper zDepth={1} style={{bottom: 0, position: 'fixed', width: '75vh'}}>
+      <Paper zDepth={1} style={{bottom: 0, position: 'fixed', width: '75vh',backgroundColor: '#e0e0e0'}}>
         <BottomNavigation selectedIndex={this.state.selectedIndex}>
           <BottomNavigationItem
             label="Recents"
@@ -45,4 +45,4 @@ class BottomNav extends Component {
   }
 }
 
-export default BottomNav;
+export default BottomNav;*/
