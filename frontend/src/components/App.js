@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
 import Sidebar from './planergy/Sidebar';
-import BottomNav from './planergy/BottomNav';
+//import BottomNav from './planergy/BottomNav';
 import Navbar from './planergy/Navbar';
 import HomePage from './planergy/HomePage';
 import Page1 from './planergy/Page1';
@@ -43,7 +43,7 @@ class App extends React.Component {
 						<Route component={NotFoundPage}/>
 					</Switch>
 				</div>
-				<BottomNav />
+				
 			</div>
 		);
   }
