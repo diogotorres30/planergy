@@ -51,10 +51,16 @@ class HomePage extends React.Component{
             
             <Doughnut style ={{widht: "30", height: "50"}} data={data}/>
             <div style={{ borderBottom: '2px solid red', overflow: 'hidden'}}></div>
-            <div style = {{borderLeft: '2px solid red'}}>
+            <div style = {{borderLeft: '2px solid red', borderBottom:'2px solid red',
+             borderRight: '2px solid red'}}>
             
         <HorizontalBar  data={data} />
             </div>
+
+            <button style = {{background:'#C4C3D0',padding: '15px 32px'}}> Button For Tiago</button>
+            <button style = {{background:'#C4C3D0',padding: '15px 32px'}}> Button For Tiago</button>
+            <button style = {{background:'#C4C3D0',padding: '15px 32px'}}> Button For Tiago</button>
+            
           </div>
 
         );
@@ -72,7 +78,7 @@ export default HomePage;
 ];*/
  
 /*
-const styles = {
+const styles = StyleSheet {
   headline: {
     fontSize: 24,
     paddingTop: 16,
@@ -84,8 +90,8 @@ const styles = {
     padding: 10,
   },
 };
-
 */
+
 
 
 
