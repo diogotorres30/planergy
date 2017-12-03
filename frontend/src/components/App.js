@@ -5,7 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import Sidebar from './planergy/Sidebar';
 //import BottomNav from './planergy/BottomNav';
 import Navbar from './planergy/Navbar';
-import HomePage from './planergy/HomePage';
+// import RoomConsumptions from './planergy/RoomConsumptions';
 // import Page1 from './planergy/Page1';
 // import Page2 from './planergy/Page2';
 import Tips from './planergy/Tips';
@@ -38,7 +38,7 @@ class App extends React.Component {
 				<Sidebar opened={this.state.sidebarOpened} sidebarToggle={this.sidebarToggle}/>
 				<div style={{paddingTop: '64px', paddingBottom: '60px'}}>
 					<Switch>
-						<Route exact path="/" component={HomePage} />
+						<Route exact path="/" component={RoomDetail} />
 						{/* <Route path="/page1" component={Page1} /> */}
 						{/* <Route path="/page2" component={Page2} /> */}
 						<Route path="/rooms/:room" component={RoomDetail} />

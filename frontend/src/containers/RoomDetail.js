@@ -2,6 +2,7 @@ import React from 'react';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import RoomTips from '../components/planergy/RoomTips';
 import RoomEstimations from '../components/planergy/RoomEstimations';
+import RoomConsumptions from '../components/planergy/RoomConsumptions';
 
 const getTips = (roomId) => {
     if(roomId === 'whole'){
@@ -24,8 +25,13 @@ class RoomDetal extends React.Component {
     }
 
     componentWillMount(){
-        const data = getTips(this.props.match.params.room);
-        const selected = this.props.location.search.slice(-1)
+        let room = 'whole';
+        let selected = '0';
+        if(this.props.match.params.room){ //Not from main page
+            room = this.props.match.params.room;
+            selected = this.props.location.search.slice(-1)
+        }
+        const data = getTips(room);
         this.setState({value: `${selected}`});
         this.setState({data: data});
         if(!data) return;
@@ -42,7 +48,7 @@ class RoomDetal extends React.Component {
         if(this.state.data === null) return (<h2>..Loading..</h2>);
         if(this.state.data === undefined) return (<h2>Room not found</h2>);     
         
-        const heading = data.name === 'whole' ? null : (
+        const heading = data.id === 'whole' ? null : (
             <div style={{background: '#efefef', borderBottom: '1px solid red', overflow: 'hidden'}}>
                 <h3 style={{fontSize: '1.75rem', paddingLeft: '2rem', fontWeight: 'normal'}}>{data.name}</h3>
             </div>
@@ -55,7 +61,7 @@ class RoomDetal extends React.Component {
           >
             <Tab label="Consumptions" value={'0'} buttonStyle={{color: 'black'}}>
                 {heading}          
-                <h1>0</h1>
+                <RoomConsumptions />
             </Tab>
             <Tab label="Estimations" value={'1'} buttonStyle={{color: 'black'}}>
                 {heading}            
