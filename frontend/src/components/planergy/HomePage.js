@@ -57,9 +57,9 @@ class HomePage extends React.Component{
         <HorizontalBar  data={data} />
             </div>
 
-            <button style = {{background:'#C4C3D0',padding: '5px 10px'}} onClick={()=>{ alert('Tiago is Spending Too much power in the Living Room'); }}> Living room Tips For Tiago</button>
-            <button style = {{background:'#C4C3D0',padding: '5px 10px'}} onClick={()=>{ alert('Tiago is Spending Too much power in the Bed Room'); }}> Bed Room Tips For Tiago</button>
-            <button style = {{background:'#C4C3D0',padding: '5px 10px'}} onClick={()=>{ alert('Tiago is Spending Too much power in the Kitchen'); }}>Kitchen Tips For Tiago</button>
+            <button style = {{background:'#C4C3D0',padding: '5px 10px'}} onClick={()=>{ alert('Tiago is Spending Too much power in the Living Room'); }}> Living room Tips</button>
+            <button style = {{background:'#C4C3D0',padding: '5px 10px'}} onClick={()=>{ alert('Tiago is Spending Too much power in the Bed Room'); }}> Bed Room Tips</button>
+            <button style = {{background:'#C4C3D0',padding: '5px 10px'}} onClick={()=>{ alert('Tiago is Spending Too much power in the Kitchen'); }}>Kitchen Tips</button>
             
           </div>
 

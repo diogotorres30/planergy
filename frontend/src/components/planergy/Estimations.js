@@ -19,8 +19,8 @@ class Page1 extends React.Component {
     render(){
         return (
             <div>
-                <h2>Select room to see tips</h2>
-                <RoomList roomList={this.state.rooms} selectIndex={2}/>    
+                <h2>Select room to see estimations</h2>
+                <RoomList roomList={this.state.rooms} selectIndex={1}/>    
             </div>
         );
     }

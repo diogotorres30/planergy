@@ -9,7 +9,10 @@ import HomePage from './planergy/HomePage';
 import Page1 from './planergy/Page1';
 import Page2 from './planergy/Page2';
 import Tips from './planergy/Tips';
+import Estimations from './planergy/Estimations';
+import Consumptions from './planergy/Consumptions';
 import RoomTips from './planergy/RoomTips';
+import RoomDetail from '../containers/RoomDetail';
 import NotFoundPage from './NotFoundPage';
 
 // This is a class-based component because the current
@@ -38,8 +41,10 @@ class App extends React.Component {
 						<Route exact path="/" component={HomePage} />
 						<Route path="/page1" component={Page1} />
 						<Route path="/page2" component={Page2} />
-						<Route path="/tips/:room" component={RoomTips} />
+						<Route path="/rooms/:room" component={RoomDetail} />
 						<Route path="/tips" component={Tips} />
+						<Route path="/consumptions" component={Consumptions} />
+						<Route path="/estimations" component={Estimations} />
 						<Route component={NotFoundPage}/>
 					</Switch>
 				</div>

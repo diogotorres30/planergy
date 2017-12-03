@@ -19,17 +19,23 @@ const Sidebar = ({opened, sidebarToggle}) => {
 				containerStyle={{top: '64px', bottom: '35px', backgroundColor: '#c32738'}}
 			>
                 <NavLink exact to="/" style={style} onClick={sidebarToggle}>
-					<MenuItem>Consumptions</MenuItem>				
+					<MenuItem>Home</MenuItem>				
 				</NavLink>
+                <NavLink to="/consumptions" style={style} onClick={sidebarToggle}>
+					<MenuItem>Consumptions</MenuItem>				
+				</NavLink>			
+                <NavLink to="/estimations" style={style} onClick={sidebarToggle}>
+					<MenuItem>Estimations</MenuItem>				
+				</NavLink>	
+                <NavLink to="/tips" style={style} onClick={sidebarToggle}>
+					<MenuItem>Tips</MenuItem>				
+				</NavLink>									
                 <NavLink to="/page1" style={style} onClick={sidebarToggle}>
 					<MenuItem>Estimations</MenuItem>				
 				</NavLink>
                 <NavLink to="/page2" style={style} onClick={sidebarToggle}>
 					<MenuItem>Kitchen</MenuItem>				
-				</NavLink>
-                <NavLink to="/tips" style={style} onClick={sidebarToggle}>
-					<MenuItem>Tips</MenuItem>				
-				</NavLink>
+				</NavLink>				
                 <NavLink to="/help" style={style} onClick={sidebarToggle}>
 					<MenuItem>Help</MenuItem>				
 				</NavLink>																				

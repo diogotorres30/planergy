@@ -4,11 +4,11 @@ import {Link} from 'react-router-dom';
 
 import {List, ListItem} from 'material-ui/List';
 
-const RomList = ({roomList}) => (
+const RomList = ({roomList, selectIndex}) => (
     <div className="roomList">
         <List>
             {roomList.map(o => 
-                (<Link to={`/Tips/${o.id}`} key={o.id}>
+                (<Link to={`/rooms/${o.id}?selected=${selectIndex}`} key={o.id}>
                     <ListItem primaryText={o.text} />
                 </Link>)
             )}
@@ -18,6 +18,7 @@ const RomList = ({roomList}) => (
 
 RomList.propTypes = {
     roomList: PropTypes.array,
+    selectIndex: PropTypes.number
   };
   
 
