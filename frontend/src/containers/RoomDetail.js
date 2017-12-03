@@ -1,6 +1,7 @@
 import React from 'react';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import RoomTips from '../components/planergy/RoomTips';
+import RoomEstimations from '../components/planergy/RoomEstimations';
 
 const getTips = (roomId) => {
     if(roomId === 'whole'){
@@ -58,7 +59,7 @@ class RoomDetal extends React.Component {
             </Tab>
             <Tab label="Estimations" value={'1'} buttonStyle={{color: 'black'}}>
                 {heading}            
-                <h1>1</h1>
+                <RoomEstimations />
             </Tab>
             <Tab label="Tips" value={'2'} buttonStyle={{color: 'black'}}>
                 {heading}
@@ -104,6 +105,9 @@ const data = [
                 description: 'Schedule washing on 01am - 06am period',
                 isOn: true,
             },                                                                        
+        ],
+        estemations:[
+
         ]
     },
     {

@@ -29,13 +29,7 @@ const Sidebar = ({opened, sidebarToggle}) => {
 				</NavLink>	
                 <NavLink to="/tips" style={style} onClick={sidebarToggle}>
 					<MenuItem>Tips</MenuItem>				
-				</NavLink>									
-                <NavLink to="/page1" style={style} onClick={sidebarToggle}>
-					<MenuItem>Estimations</MenuItem>				
-				</NavLink>
-                <NavLink to="/page2" style={style} onClick={sidebarToggle}>
-					<MenuItem>Kitchen</MenuItem>				
-				</NavLink>				
+				</NavLink>												
                 <NavLink to="/help" style={style} onClick={sidebarToggle}>
 					<MenuItem>Help</MenuItem>				
 				</NavLink>																				

@@ -1,13 +1,10 @@
 import React from 'react';
-import {Tabs, Tab} from 'material-ui/Tabs';
 import {Line} from 'react-chartjs-2';
-import SwipeableViews from 'react-swipeable-views';
 
-class Estimations extends React.Component{
+class RoomEstimations extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-          slideIndex: 0,
         };
       }
       
@@ -49,37 +46,14 @@ class Estimations extends React.Component{
             }
 
 
-render() {
+    render() {
     return (
-      
-        <div  >
-        <div style = {{background: '#e0e0e0', borderBottom: '2px solid red', overflow: 'hidden'}}>
-        
-               <Tabs style = {{background: '#e0e0e0', borderBottom: '2px solid red', overflow: 'hidden'}} onChange={this.handleChange}
-               value={this.state.slideIndex}
-                                       >
-               <Tab label="Consumptions" value={'/'} nav/>
-               <Tab label="Estimations" value={'Page1'} />
-               <Tab label="Tips" value={'Tips'} />
-               </Tabs>
-           <SwipeableViews
-         index={this.state.slideIndex}
-         onChangeIndex={this.handleChange}
-       >
-        
-       </SwipeableViews>
-      
-       <div style = {{background: '#e0e0e0', borderLeft: '2px solid red', overflow: 'hidden'}}>
+       <div>
         <Line data={this.state} />
-     </div>
-     
-        </div>
-        
-       </div>
-     
-    )
-}    }    
-export default Estimations;
+     </div>     
+    )}    
+}    
+export default RoomEstimations;
 
 const initialState = {
     labels: ['Kitchen', 'Living Room', 'Kevins Room', 'Bed rom', 'Garden'],

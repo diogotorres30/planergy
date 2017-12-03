@@ -6,12 +6,12 @@ import Sidebar from './planergy/Sidebar';
 //import BottomNav from './planergy/BottomNav';
 import Navbar from './planergy/Navbar';
 import HomePage from './planergy/HomePage';
-import Page1 from './planergy/Page1';
-import Page2 from './planergy/Page2';
+// import Page1 from './planergy/Page1';
+// import Page2 from './planergy/Page2';
 import Tips from './planergy/Tips';
 import Estimations from './planergy/Estimations';
 import Consumptions from './planergy/Consumptions';
-import RoomTips from './planergy/RoomTips';
+// import RoomTips from './planergy/RoomTips';
 import RoomDetail from '../containers/RoomDetail';
 import NotFoundPage from './NotFoundPage';
 
@@ -39,8 +39,8 @@ class App extends React.Component {
 				<div style={{paddingTop: '64px', paddingBottom: '60px'}}>
 					<Switch>
 						<Route exact path="/" component={HomePage} />
-						<Route path="/page1" component={Page1} />
-						<Route path="/page2" component={Page2} />
+						{/* <Route path="/page1" component={Page1} /> */}
+						{/* <Route path="/page2" component={Page2} /> */}
 						<Route path="/rooms/:room" component={RoomDetail} />
 						<Route path="/tips" component={Tips} />
 						<Route path="/consumptions" component={Consumptions} />
