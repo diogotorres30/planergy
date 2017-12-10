@@ -61,7 +61,8 @@ class Login extends React.Component{
                         underlineFocusStyle={{borderColor: '#c32738'}}
                         floatingLabelStyle={{color: '#c4a2a6'}}
                         onChange={this.passwordChanged}
-                        value={this.state.password}                    
+                        value={this.state.password}
+                        type="password"                  
                     />
                 </div>
                 <div style={{display: 'flex', justifyContent: 'space-around', height: '36px', marginTop: '1rem'}}>
