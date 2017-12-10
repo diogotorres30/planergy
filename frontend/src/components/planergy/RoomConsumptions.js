@@ -1,67 +1,73 @@
 import React from 'react';
-import {Doughnut, HorizontalBar} from 'react-chartjs-2';
+import {Doughnut} from 'react-chartjs-2';
+import LightBulb from 'material-ui/svg-icons/action/lightbulb-outline';
 import RaisedButton from 'material-ui/RaisedButton';
-
-class RoomConsumptions extends React.Component{
-    
-    constructor(props) {
-        super(props);
-        this.state = {
-          slideIndex: 0,
-        };
-      }
-      
-      
-      handleChange = (value) => {
-        
-        this.setState({
-          slideIndex: value,
-        });
-      };
-        
-//select = (index) => this.setState({selectedIndex: index});
-    render() {
-        return (
-            <div>
-              <Doughnut style ={{widht: "30", height: "50"}} data={data}/>
-              <HorizontalBar  style={{borderLeft: '1px solid red', borderTop: '1px solid red'}} data={data} />
-              <div style={{display: 'inline'}}>
-                <RaisedButton label="Living room Tips"/>
-                <RaisedButton label="Bed room Tips"/>
-                <RaisedButton label="Kitchen room Tips"/>
-              </div>
-            </div>
-        );
-      }
-    }
-  
-
-export default RoomConsumptions;
+import { NavLink } from 'react-router-dom';
 
 
-const data = {
-    labels: [
-        'Kitchen',
-        'Living Room',
-        'Basement',
-        'Kevins Room'
-    ],
-    
-    datasets: [{
-        label: 'Consumption',
-        data: [40, 27, 23,10],
-        backgroundColor: [
-        '#FF1C00',
-        '#FF5C5C',
-        '#E34234',
-        '#FF6961'
-        ],
-        hoverBackgroundColor: [
-        '#c32738',
-        '#36A2EB',
-        '#03C03C',
-        '#36AFFF'
-        ]
-    }]
+const buttonStyle = {
+  height: '25px',
+  float: 'right',
+  // paddingRight: '5px',
+  minWidth: '5.5%',
+  width: '5.5%'
 };
 
+const RoomConsumptions  = ({keys, data, whole, handleTabChange}) => {
+
+  let transformed = [];
+
+  if(whole){
+    keys.map(o => transformed.push({id: o.id, name: o.name, color: o.color, value: data.filter(p => p.isOn && p.roomId === o.id).map(p => p.consumption).reduce((sum, x) => sum + x, 0)}))
+  }
+  else{
+    data.map(o => transformed.push({id: o.id, name: o.name, color: o.color, value: o.isOn ? o.consumption : 0}));
+  }
+  const max = Math.max(...transformed.map(o => o.value));
+  const doughnutDataSet = {
+    labels: transformed.map(o => o.name),
+    datasets: [{
+      data: transformed.map(o => o.value),
+      backgroundColor: transformed.map(o => o.color)
+    }]
+  };
+  const consumption = transformed.map(o => o.value).reduce((sum, x) => sum + x, 0);
+
+  return (
+      <div>
+        <div>
+          <div style={{whiteSpace: 'nowrap', position: 'absolute', left: `${consumption > 10 ? '45%' : '46%'}`, top: `${whole ? '53%' : '63%'}`}}>
+            {`${consumption} W/h`}
+          </div>
+          <div>
+            <Doughnut style ={{widht: "30", height: "50"}} data={doughnutDataSet}/>
+          </div>
+        </div>
+        <div style={{width: '100%', position: 'absolute'}}>
+          <div style={{padding: '5px'}}>
+          {transformed.sort((a, b) => b.value - a.value).map(o =>{
+            
+            return(
+              <div key={o.id} style={{width: '100%', margin: '5px 0', height: '25px'}}> 
+                <div style={{width: '20%', float: 'left'}}>{o.name}</div>
+                {
+                  whole? (<NavLink to={`/rooms/${o.id}?selected=0`}>
+                    <div style={{float: 'left', height: '25px', backgroundColor: '#c32738', width: `${o.value/max*72}%`}}/>
+                  </NavLink>
+                  ) : (<div style={{float: 'left', height: '25px', backgroundColor: '#c32738', width: `${o.value/max*72}%`}}/>)
+                }
+                {whole ? (
+                  <NavLink to={`/rooms/${o.id}?selected=2`}>
+                    <RaisedButton style={buttonStyle} icon={<LightBulb />}/>
+                  </NavLink>
+                ) : (<RaisedButton onClick={() => handleTabChange("2")} style={buttonStyle} icon={<LightBulb />}/>)}
+              </div>)
+          })}
+          </div>
+        </div>
+      </div>
+  );
+      
+}
+  
+export default RoomConsumptions;

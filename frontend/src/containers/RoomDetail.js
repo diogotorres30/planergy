@@ -3,38 +3,31 @@ import { Tabs, Tab } from 'material-ui/Tabs';
 import RoomTips from '../components/planergy/RoomTips';
 import RoomEstimations from '../components/planergy/RoomEstimations';
 import RoomConsumptions from '../components/planergy/RoomConsumptions';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as actions from '../actions/tipsActions';
 
-const getTips = (roomId) => {
-    if(roomId === 'whole'){
-        return {
-            id: 'whole',
-            name: 'Whole house',
-            tips: [].concat(...data.map(o => o.tips))
-        };
-    }
-    return data.find(o => o.id === roomId);
-};
-
-class RoomDetal extends React.Component {
+class RoomDetail extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             value: '0',
-            data: null
         };
     }
 
     componentWillMount(){
-        let room = 'whole';
-        let selected = '0';
-        if(this.props.match.params.room){ //Not from main page
-            room = this.props.match.params.room;
-            selected = this.props.location.search.slice(-1)
-        }
-        const data = getTips(room);
+        const selected = this.props.location.search ? this.props.location.search.slice(-1) : '0';
         this.setState({value: `${selected}`});
-        this.setState({data: data});
-        if(!data) return;
+    }
+
+    // componentWillReceiveProps(newProps){
+
+    //     const selected = newProps.location.search ? this.props.location.search.slice(-1) : '0';
+    //     this.setState({value: `${selected}`});
+    // }
+
+    tipToggle = (tipId) => {
+        this.props.actions.toggleTip(tipId)
     }
 
     handleChange = (value) => {
@@ -44,150 +37,82 @@ class RoomDetal extends React.Component {
       };    
 
     render(){
-        const data = this.state.data;
-        if(this.state.data === null) return (<h2>..Loading..</h2>);
-        if(this.state.data === undefined) return (<h2>Room not found</h2>);     
+        let room, tips, keys, appliances;
+        let roomId = 'whole';
+        if(this.props.match.params.room){ //Not from main page
+            roomId = this.props.match.params.room;
+            room = this.props.rooms.find(o => o.id === roomId);
+            tips =  this.props.tips.filter(o => o.roomId === roomId);
+            keys = this.props.appliances.filter(o => o.roomId === roomId);
+            appliances = this.props.appliances.filter(o => o.roomId === roomId);
+            
+            // this.setState({estimations: this.props.estimations.filter(o => o.roomId === roomId)});
+        }
+        else{
+            room = {id: 'whole', name: 'Whole house'};
+            tips = this.props.tips;
+            keys = this.props.rooms;
+            appliances = this.props.appliances;
+        }
+        if(room === null) return (<h2>..Loading..</h2>);
+        if(room === undefined) return (<h2>Room not found</h2>);
+
+        const whole = room.id === 'whole';
         
-        const heading = data.id === 'whole' ? null : (
-            <div style={{background: '#efefef', borderBottom: '1px solid red', overflow: 'hidden'}}>
-                <h3 style={{fontSize: '1.75rem', paddingLeft: '2rem', fontWeight: 'normal'}}>{data.name}</h3>
+        const heading = whole ? null : (
+            <div style={{background: '#efefef', borderBottom: '1px solid #c32738', overflow: 'hidden'}}>
+                <h3 style={{fontSize: '1.75rem', paddingLeft: '2rem', fontWeight: 'normal', margin: '1.2rem 0'}}>{room.name}</h3>
             </div>
         )
         return(
             <Tabs
             value={this.state.value}
             onChange={this.handleChange}
+            inkBarStyle={{backgroundColor: '#c32738'}}
             tabItemContainerStyle={{backgroundColor:'#dddddd', color: 'black'}}
           >
             <Tab label="Consumptions" value={'0'} buttonStyle={{color: 'black'}}>
                 {heading}          
-                <RoomConsumptions />
+                <RoomConsumptions keys={keys} data={appliances} whole={whole} handleTabChange={this.handleChange}/>
             </Tab>
             <Tab label="Estimations" value={'1'} buttonStyle={{color: 'black'}}>
                 {heading}            
-                <RoomEstimations />
+                <RoomEstimations keys={keys} data={appliances} whole={whole}/>
             </Tab>
             <Tab label="Tips" value={'2'} buttonStyle={{color: 'black'}}>
                 {heading}
-                <RoomTips data={data.tips}/>
-            </Tab>            
-          </Tabs>            
+                {<RoomTips keys={keys} data={tips} toggleTip={this.tipToggle} whole={whole}/>}
+            </Tab>
+          </Tabs>
         );
     }
 }
 
-export default RoomDetal;
-
-const data = [
-    {
-        id: 'kitchen',
-        name: 'Kitchen',
-        tips: [
-            {
-                id: 'oven1',
-                appliance: 'Oven',
-                savingValue: 10,
-                description: 'Turn the oven when not using',
-                isOn: true,
-            },
-            {
-                id: 'oven2',
-                appliance: 'Oven',
-                savingValue: 14,
-                description: 'Plan your cooking for 2 hours',
-                isOn: false,
-            },
-            {
-                id: 'washer1',
-                appliance: 'Washing machine',
-                savingValue: 9,
-                description: 'Turn off the washing when not using',
-                isOn: false,
-            },
-            {
-                id: 'washer2',
-                appliance: 'Washing machine',
-                savingValue: 7,
-                description: 'Schedule washing on 01am - 06am period',
-                isOn: true,
-            },                                                                        
-        ],
-        estemations:[
-
-        ]
-    },
-    {
-        id: 'livingRoom',
-        name: 'Living Room',
-        tips: [
-            {
-                id: 'tv1',
-                appliance: 'Tv',
-                savingValue: 5,
-                description: 'Tv tip 1',
-                isOn: true,
-            },
-            {
-                id: 'tv2',
-                appliance: 'Tv',
-                savingValue: 2,
-                description: 'Tv tip 2',
-                isOn: false,
-            },
-            {
-                id: 'tv3',
-                appliance: 'Tv',
-                savingValue: 1,
-                description: 'Better go out',
-                isOn: false,
-            },
-            {
-                id: 'playstation',
-                appliance: 'Playstation',
-                savingValue: 7,
-                description: 'Try to play less that 18 hours a day',
-                isOn: true,
-            },                                                                        
-        ]
-    },
-    {
-        id: 'garage',
-        name: 'Garage',
-        tips: [
-            {
-                id: 'light1',
-                appliance: 'Lights',
-                savingValue: 8,
-                description: 'Turn off the light more often',
-                isOn: true,
-            },
-            {
-                id: 'light2',
-                appliance: 'Lights',
-                savingValue: 14,
-                description: 'Install saving lightbulbs',
-                isOn: false,
-            },                                                                       
-        ]
-    },
-    {
-        id: 'bathRoom',
-        name: 'Bath room',
-        tips: [
-            {
-                id: 'light11',
-                appliance: 'Lights',
-                savingValue: 7,
-                description: 'Turn off the light more often',
-                isOn: true,
-            },
-            {
-                id: 'heating',
-                appliance: 'Heating',
-                savingValue: 21,
-                description: 'Turn off the heating when not home',
-                isOn: false,
-            },                                                                       
-        ]
-    },               
-];
+function mapStateToProps(state) {
+    const{
+        tips,
+        rooms,
+        appliances,
+        estimations,
+        consumptions
+    } = state;
+    
+    return {
+        tips,
+        rooms,
+        appliances,
+        estimations,
+        consumptions        
+    };
+  }
+  
+  function mapDispatchToProps(dispatch) {
+    return {
+      actions: bindActionCreators(actions, dispatch)
+    };
+  }
+  
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(RoomDetail);

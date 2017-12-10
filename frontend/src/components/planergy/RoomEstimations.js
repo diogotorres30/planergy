@@ -1,88 +1,58 @@
 import React from 'react';
-import {Line} from 'react-chartjs-2';
+import {Bar} from 'react-chartjs-2';
 
-class RoomEstimations extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-        };
+const RoomEstimations = ({keys, data, whole}) =>{
+
+    let transformed = [];
+    
+      if(whole){
+        keys.map(o => {
+            transformed.push(
+            {
+                // id: o.id, 
+                name: o.name, 
+                color: o.color,
+                value: data.filter(p => p.roomId === o.id).map(p => p.consumption).reduce((sum, x) => sum + x, 0),
+                estimation: data.filter(p => p.roomId === o.id).map(p => p.consumption * p.estimation).reduce((sum, x) => sum + x, 0)
+            });
+            // transformed.push(
+            //     {
+            //         // id: o.id, 
+            //         name: `${o.name} Est.` , 
+            //         color: o.color,
+            //         // value: data.filter(p => p.roomId === o.id).map(p => p.consumption).reduce((sum, x) => sum + x, 0),
+            //         value: data.filter(p => p.roomId === o.id).map(p => p.consumption * p.estimation).reduce((sum, x) => sum + x, 0)
+            //     });            
+        }
+        );
       }
-      
-      
-    handleChange = (value) => {
-        
-        this.setState({
-          slideIndex: value,
-        });
+      else{
+        data.map(o => transformed.push({id: o.id, color: o.color, name: o.name, value: o.consumption, estimation: o.consumption * o.estimation}));
+      }
+
+    const barChartDataSet = {
+        labels: transformed.map(o => o.name),
+        datasets: [{
+            label: 'Real consumption',
+            data: transformed.map(o => o.value),
+            backgroundColor: transformed.map(o => o.color)
+          },{
+            label: 'Estimation',
+            data: transformed.map(o => o.estimation),
+            borderColor: transformed.map(o => o.color),
+            borderWidth: 1
+          }
+    ]
       };
-    componentWillMount(){
-        this.setState(initialState);
-    }
-    componentDidMount(){
-        
-        var _this = this;
-        
-        setInterval(function(){
-        var oldDataSet = _this.state.datasets[0];
-        var newData = [];
-        
-        for(var x=0; x< _this.state.labels.length; x++){
-            newData.push(Math.floor(Math.random() * 300));
-                    }
-        
-                var newDataSet = {
-                    ...oldDataSet
-                    };
-        
-                newDataSet.data = newData;
-        
-                var newState = {
-                    ...initialState,
-                    datasets: [newDataSet]
-                    };
-        
-                    _this.setState(newState);
-                }, 5000);
-            }
 
-
-    render() {
     return (
-       <div>
-        <Line data={this.state} />
-     </div>     
-    )}    
-}    
+        <div>
+           <Bar data={barChartDataSet} options={{legend: {display: false}}}/>
+        </div>     
+    );
+};
 export default RoomEstimations;
 
-const initialState = {
-    labels: ['Kitchen', 'Living Room', 'Kevins Room', 'Bed rom', 'Garden'],
-    datasets: [
-      {
-        label: 'Estimations',
-        fill: true,
-        lineTension: 0.1,
-        backgroundColor: 'rgba(75,192,192,0.4)',
-        borderColor: 'rgba(75,192,192,1)',
-        borderCapStyle: 'butt',
-        borderDash: [],
-        borderDashOffset: 0.0,
-        borderJoinStyle: 'miter',
-        pointBorderColor: 'rgba(75,192,192,1)',
-        pointBackgroundColor: '#fff',
-        pointBorderWidth: 1,
-        pointHoverRadius: 5,
-        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-        pointHoverBorderColor: 'rgba(220,220,220,1)',
-        pointHoverBorderWidth: 2,
-        pointRadius: 1,
-        pointHitRadius: 10,
-        data: [35, 20 , 15, 15, 10 ]
-      }
-    ]
-  };
-  
-  
   
   
   

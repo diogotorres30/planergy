@@ -37,5 +37,11 @@ h2 {
   width: 75vh;
   position: relative;
   background-color: #fff7fe;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sectionHeading{
+  color: black;
+  padding-left: 16px;
 }

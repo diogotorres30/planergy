@@ -41,7 +41,8 @@ class App extends React.Component {
 						<Route exact path="/" component={RoomDetail} />
 						{/* <Route path="/page1" component={Page1} /> */}
 						{/* <Route path="/page2" component={Page2} /> */}
-						<Route path="/rooms/:room" component={RoomDetail} />
+						{/* <Route path="/rooms/:room" component={RoomDetail} /> */}
+						<Route path="/rooms/:room" component={(props) => (<RoomDetail {...props}/>) } />						
 						<Route path="/tips" component={Tips} />
 						<Route path="/consumptions" component={Consumptions} />
 						<Route path="/estimations" component={Estimations} />
