@@ -5,6 +5,7 @@ import rooms from './roomsReducer';
 import appliances from './appliancesReducer';
 import estimations from './estimationsReducer';
 import consumptions from './consumptionsReducer';
+import appState from './appStateReducer';
 import { routerReducer } from 'react-router-redux';
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   rooms,
   estimations,
   consumptions,
+  appState,
   routing: routerReducer
 });
 

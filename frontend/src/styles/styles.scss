@@ -45,3 +45,17 @@ h2 {
   color: black;
   padding-left: 16px;
 }
+
+.consumptionBar {   
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -ms-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.consumptionBar:hover{
+  zoom: 1;
+  filter: alpha(opacity=80);
+  opacity: 0.8;
+}

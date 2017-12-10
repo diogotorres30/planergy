@@ -11,10 +11,14 @@ import Navbar from './planergy/Navbar';
 import Tips from './planergy/Tips';
 import Estimations from './planergy/Estimations';
 import Consumptions from './planergy/Consumptions';
+import Login from './planergy/Login';
 // import RoomTips from './planergy/RoomTips';
 import RoomDetail from '../containers/RoomDetail';
 import NotFoundPage from './NotFoundPage';
-
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as actions from '../actions/appStateActions';
+import { withRouter } from 'react-router'
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
 // component at the top-level.
@@ -27,27 +31,39 @@ class App extends React.Component {
 		};
 	}
 
+	toggleLoginUpdate = () => {
+		this.props.actions.toggleLogin();
+		this.setState({});
+	}
+
 	sidebarToggle = () => {
 		this.setState({sidebarOpened: !this.state.sidebarOpened});
 	}
-
+//toggleLogin
   render() {
+
+	const {loggedIn} = this.props.appState;
+	const {toggleLogin} = this.props.actions;
+
+	if(!loggedIn && localStorage.getItem('loggedIn') === "true"){
+		toggleLogin();
+		return null;
+	} 
     return (
 			<div id="planergy">
-				<Navbar sidebarToggle={this.sidebarToggle}/>
-				<Sidebar opened={this.state.sidebarOpened} sidebarToggle={this.sidebarToggle}/>
+				<Navbar sidebarToggle={this.sidebarToggle} showIcon={loggedIn}/>
+				<Sidebar opened={this.state.sidebarOpened} sidebarToggle={this.sidebarToggle} toggleLogin={toggleLogin}/>
 				<div style={{paddingTop: '64px', paddingBottom: '60px'}}>
+				{loggedIn ? (
 					<Switch>
 						<Route exact path="/" component={RoomDetail} />
-						{/* <Route path="/page1" component={Page1} /> */}
-						{/* <Route path="/page2" component={Page2} /> */}
-						{/* <Route path="/rooms/:room" component={RoomDetail} /> */}
 						<Route path="/rooms/:room" component={(props) => (<RoomDetail {...props}/>) } />						
 						<Route path="/tips" component={Tips} />
 						<Route path="/consumptions" component={Consumptions} />
 						<Route path="/estimations" component={Estimations} />
 						<Route component={NotFoundPage}/>
 					</Switch>
+				) : (<Login toggleLogin={toggleLogin}/>)}				
 				</div>
 			
 			</div>
@@ -59,4 +75,24 @@ App.propTypes = {
   children: PropTypes.element
 };
 
-export default App;
+
+function mapStateToProps(state) {
+    const{
+        appState
+    } = state;
+    
+    return {
+        appState     
+    };
+  }
+  
+  function mapDispatchToProps(dispatch) {
+    return {
+      actions: bindActionCreators(actions, dispatch)
+    };
+  }
+  
+  export default withRouter(connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App));

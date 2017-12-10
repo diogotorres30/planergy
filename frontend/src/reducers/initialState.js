@@ -1,5 +1,9 @@
 export default {
 
+  appState:{
+    loggedIn: false
+  },
+
   rooms: [
     {
       id: 'kitchen',

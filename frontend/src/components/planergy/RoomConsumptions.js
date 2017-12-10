@@ -32,15 +32,15 @@ const RoomConsumptions  = ({keys, data, whole, handleTabChange}) => {
     }]
   };
   const consumption = transformed.map(o => o.value).reduce((sum, x) => sum + x, 0);
-
+//style={{whiteSpace: 'nowrap', position: 'absolute', left: `${consumption > 10 ? '45%' : '46%'}`, top: `${whole ? '53%' : '63%'}`}}
   return (
       <div>
         <div>
-          <div style={{whiteSpace: 'nowrap', position: 'absolute', left: `${consumption > 10 ? '45%' : '46%'}`, top: `${whole ? '53%' : '63%'}`}}>
-            {`${consumption} W/h`}
+          <div style={{textAlign: 'center', fontWeight: 'bold', margin: '10px 0'}}>
+            {`Current expenses: ${parseFloat(consumption * 0.002372).toFixed(2)} €/h`}
           </div>
           <div>
-            <Doughnut style ={{widht: "30", height: "50"}} data={doughnutDataSet}/>
+            <Doughnut style ={{widht: "30", height: "50"}} data={doughnutDataSet} options={{legend: {display: false}}}/>
           </div>
         </div>
         <div style={{width: '100%', position: 'absolute'}}>
@@ -52,7 +52,7 @@ const RoomConsumptions  = ({keys, data, whole, handleTabChange}) => {
                 <div style={{width: '20%', float: 'left'}}>{o.name}</div>
                 {
                   whole? (<NavLink to={`/rooms/${o.id}?selected=0`}>
-                    <div style={{float: 'left', height: '25px', backgroundColor: '#c32738', width: `${o.value/max*72}%`}}/>
+                    <div className="consumptionBar" style={{float: 'left', height: '25px', backgroundColor: '#c32738', width: `${o.value/max*72}%`}}/>
                   </NavLink>
                   ) : (<div style={{float: 'left', height: '25px', backgroundColor: '#c32738', width: `${o.value/max*72}%`}}/>)
                 }
