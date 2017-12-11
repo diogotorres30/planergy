@@ -11,6 +11,7 @@ import Navbar from './planergy/Navbar';
 import Tips from './planergy/Tips';
 import Estimations from './planergy/Estimations';
 import Consumptions from './planergy/Consumptions';
+import Settings from './planergy/Settings';
 import Login from './planergy/Login';
 // import RoomTips from './planergy/RoomTips';
 import RoomDetail from '../containers/RoomDetail';
@@ -61,6 +62,7 @@ class App extends React.Component {
 						<Route path="/tips" component={Tips} />
 						<Route path="/consumptions" component={Consumptions} />
 						<Route path="/estimations" component={Estimations} />
+						<Route path="/settings" component={Settings} />
 						<Route component={NotFoundPage}/>
 					</Switch>
 				) : (<Login toggleLogin={toggleLogin}/>)}				

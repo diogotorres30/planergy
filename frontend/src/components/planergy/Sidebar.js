@@ -30,6 +30,9 @@ const Sidebar = ({opened, sidebarToggle, toggleLogin}) => {
                 <NavLink to="/tips" style={style} onClick={sidebarToggle}>
 					<MenuItem>Tips</MenuItem>				
 				</NavLink>
+                <NavLink to="/settings" style={style} onClick={sidebarToggle}>
+					<MenuItem>Settings</MenuItem>				
+				</NavLink>				
 				<Link to="/" style={style} onClick={sidebarToggle}>
 					<MenuItem  
 						style={{textDecoration: 'underline'}}onClick={() => {			
